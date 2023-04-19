@@ -1,0 +1,93 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Calculadora Financeira</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				color: black;
+				font-size: 20px;
+			}
+			.fundo{
+				background-color:#21509c;
+				height: 100%;	
+				}
+			.formu{
+				position: absolute;
+				background-color:gray;
+				top: 30%;
+				left: 50%;
+				transform: translate(-50%,50%);
+				border-radius: 15px;
+				padding: 15px;		
+				}
+			.botao{
+				width: 100px;
+				}
+			#resultado{
+					background-color: white;
+					width:100px;
+					}
+			#titu{
+				text-align: center;
+				font-size: 50px;
+				}
+		</style>
+	</head>
+	<body>
+		<div class="fundo">
+			<h1 id="titu">Calculadora Financeira</h1>
+			<form class="formu">
+				<table>
+					<tr>
+						<td><label for="vp">Valor do Aporte:</label></td>
+						<td><input type="number" id="vp" class="botao"></td>
+					</tr>
+					<tr>	
+						<td><label for="aporte">Aporte mensal:</label></td>
+						<td><input type="number" id="aporte" class="botao"></td>
+					</tr>
+					<tr>
+						<td><label for="taxa">Taxa de Juros (a.a):</label></td>
+						<td><input type="number" id="taxa" class="botao"></td>
+					</tr>
+					<tr>
+						<td><label for="periodo">Período da aplicação:</label></td>
+						<td><input type="number" id="periodo" class="botao"></td>
+					</tr>
+					<tr>
+						<td><input type="submit" id="send" value="Calcular"></td>
+						<td><p id="resultado">0</p></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<script>
+			const form = document.querySelector("#send");
+
+			form.addEventListener("click", function (e){
+			
+			event.preventDefault();	
+
+			const pv = document.querySelector("#vp");
+			const pv1 = pv.value;
+			const aporte = document.querySelector("#aporte");
+			const aporte1 = aporte.value;
+			const periodo = document.querySelector("#periodo");
+			const periodo1 = periodo.value;
+			const taxa = document.querySelector("#taxa");
+			const taxa1 = taxa.value;
+
+			const ifv = 1*((1+(taxa1/100))**1);
+			const iq = ((ifv/1)**(1/12)-1);
+			const fv1 = pv1*((1+iq)**periodo1);
+			const fv2 = aporte1*((((1+iq)**periodo1)-1)/iq);
+			const fvsoma = fv1+fv2;
+
+			document.getElementById("resultado").innerHTML = parseFloat(fvsoma.toFixed(2));
+			})
+		</script>
+	</body>
+</html>

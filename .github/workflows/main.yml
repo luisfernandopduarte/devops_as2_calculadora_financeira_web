@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: "docker build -t ${{secrets.CI_REGISTRY_USER}}/calculadora-html:latest"
+      - run: "docker build -t ${{secrets.CI_REGISTRY_USER}}/calculadora-html:latest ."
       - run: "docker login -u ${{secrets.CI_REGISTRY_USER}} -p ${{secrets.CI_REGISTRY_PASSWORD}}"
       - run: "docker push -t ${{secrets.CI_REGISTRY_USER}}/calculadora-html:latest"
       

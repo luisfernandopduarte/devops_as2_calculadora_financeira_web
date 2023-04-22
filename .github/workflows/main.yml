@@ -18,29 +18,17 @@ jobs:
       - run: 'docker push ${{secrets.CI_REGISTRY_USER}}/calculadora-html:latest'
       
       
-  bandiy-job:
+  test-job:
         runs-on: ubuntu-latest
         steps:
-         - name: Bandit Scan
-         - uses: shundor/python-bandit-scan@v1.0
-           with:
-                path: .
-                # Report only issues of a given severity level or higher. Can be LOW, MEDIUM or HIGH. Default is UNDEFINED (everything)
-                level: UNDEFINED
-                # Report only issues of a given confidence level or higher. Can be LOW, MEDIUM or HIGH. Default is UNDEFINED (everything)
-                confidence: UNDEFINED
-                # comma-separated list of paths (glob patterns supported) to exclude from scan (note that these are in addition to the excluded paths provided in the config file) (default: .svn,CVS,.bzr,.hg,.git,__pycache__,.tox,.eggs,*.egg)
-                excluded_paths: DEFAULT
-                # exit with 0, even with results found
-                exit_zero: DEFAULT
-                # comma-separated list of test IDs to skip
-                skips: DEFAULT
-                # path to a .bandit file that supplies command line arguments
-                ini_path: DEFAULT
-                # Github token of the repository (automatically created by Github)
-                # Github token of the repository (automatically created by Github)
-                GITHUB_TOKEN: ${{secrets.CI_GIT_TOKEN}}
-         - run: echo "Teste"
+        - name: sast-scan
+          uses: AppThreat/sast-scan-action@1.0.2
+          with:
+              # Source directory to scan. Defaults to workspace
+           src: /github/workspace
+              # Output directory for the generated reports. Defaults to reports
+           output: /github/workspace/reports
+        - run: echo "Teste"
      
   deploy-job:
     runs-on: ubuntu-latest

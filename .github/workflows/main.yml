@@ -25,7 +25,7 @@ jobs:
           uses: AppThreat/sast-scan-action@1.0.2
           with:
               # Source directory to scan. Defaults to workspace
-           src: /github/workspace
+           src: /github/luisfernandopduarte/devops_as2_calculadora_financeira_web
               # Output directory for the generated reports. Defaults to reports
            output: /github/workspace/reports
         - run: echo "Teste"

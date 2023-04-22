@@ -57,5 +57,5 @@ jobs:
       - run: 'docker run -d -p 8080:80 ${{secrets.CI_REGISTRY_USER}}/calculadora-html:latest'
       - run: 'sudo snap install ngrok'
       - run: 'ngrok config add-authtoken ${{secrets.CI_TOKEN_NGROK}}'
-      - run: 'ngrok http 8080'
+      - run: 'ngrok http 8002'
       

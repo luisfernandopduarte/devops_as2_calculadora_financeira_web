@@ -40,6 +40,7 @@ jobs:
                 # Github token of the repository (automatically created by Github)
                 # Github token of the repository (automatically created by Github)
                 GITHUB_TOKEN: ${{secrets.CI_GIT_TOKEN}}
+         - run: echo "Teste"
      
   deploy-job:
     runs-on: ubuntu-latest

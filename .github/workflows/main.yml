@@ -39,6 +39,16 @@ jobs:
           with:
             path: .
         - run: echo "SAST"
+        
+  test-sastscan-job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: sast-scan
+          uses: AppThreat/sast-scan-action@1.0.2
+          with:
+            src: /github/workspace
+            output: /github/workspace/reports
+        - run: echo "SAST"
      
   deploy-job:
     runs-on: ubuntu-latest

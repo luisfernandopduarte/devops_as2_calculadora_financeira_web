@@ -54,4 +54,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: echo "Finalizado"
+      - run: 'docker run -d -p 8080:80 ${{secrets.CI_REGISTRY_USER}}/calculadora-html:latest'
+      - run: 'snap install ngrok'
+      - run: 'ngrok config add-authtoken ${{secrets.CI_TOKEN_NGROK}}'
+      - run: 'ngrok http 8080'
+      

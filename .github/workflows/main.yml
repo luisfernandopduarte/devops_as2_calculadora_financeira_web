@@ -27,7 +27,7 @@ jobs:
           uses: zaproxy/action-baseline@v0.7.0
           with:
             # GitHub Token to create issues in the repository
-            token: ${{CI_GIT_TOKEN}}
+            token: ${{secrets.CI_GIT_TOKEN}}
             # Target URL
             target: https://48fe-186-212-15-124.ngrok-free.app/Calculadora_html.html
             # Relative path of the ZAP configuration file

@@ -18,29 +18,16 @@ jobs:
       - run: 'docker push ${{secrets.CI_REGISTRY_USER}}/calculadora-html:latest'
       
       
-  test-job:
+  test-owasp-job:
         runs-on: ubuntu-latest
         steps:
         - name: OWASP ZAP Baseline Scan
-  # You may pin to the exact commit or the version.
-  # uses: zaproxy/action-baseline@7cea08522cd386f6c675776d5e4296aecf61f33b
           uses: zaproxy/action-baseline@v0.7.0
           with:
-            # GitHub Token to create issues in the repository
             token: ${{secrets.CI_GIT_TOKEN}}
-            # Target URL
-            target: https://48fe-186-212-15-124.ngrok-free.app/Calculadora_html.html
-            # Relative path of the ZAP configuration file
-            #rules_file_name: # optional
-            # The Docker file to be executed
+            target: ${{secrets.CI_URL_NGROK}}
             docker_name: owasp/zap2docker-stable
-            # Additional command line options
-            #cmd_options: # optional
-            # The title for the GitHub issue to be created
-            issue_title: ZAP Scan Baseline Report
-            # The action status will be set to fail if ZAP identifies any alerts during the baseline scan
-            #fail_action: # optional
-            # The action will file the report to the GitHub issue using the issue_title input
+            issue_title: ZAP Scan Baseline Report=
             allow_issue_writing: true
         - run: echo "Teste"
      

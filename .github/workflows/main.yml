@@ -47,8 +47,7 @@ jobs:
         - name: sast-scan
           uses: AppThreat/sast-scan-action@1.0.2
           with:
-            src: /github/luisfernandopduarte
-            output: /github/luisfernandopduarte/devops_as2_calculadora_financeira_web
+            src: /github/luisfernandopduarte/devops_as2_calculadora_financeira_web
         - run: echo "SAST"
      
   deploy-job:

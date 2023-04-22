@@ -38,6 +38,7 @@ jobs:
           uses: michelleamesquita/sast-validator@v40
           with:
             path: .
+            language: python
         - run: echo "SAST"
         
   test-sastscan-job:
@@ -46,8 +47,8 @@ jobs:
         - name: sast-scan
           uses: AppThreat/sast-scan-action@1.0.2
           with:
-            src: /github/workspace
-            output: /github/workspace/reports
+            src: /github/luisfernandopduarte
+            output: /github/luisfernandopduarte/devops_as2_calculadora_financeira_web
         - run: echo "SAST"
      
   deploy-job:

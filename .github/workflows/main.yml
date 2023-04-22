@@ -56,6 +56,6 @@ jobs:
       - uses: actions/checkout@v3
       - run: 'docker run -d -p 8080:80 ${{secrets.CI_REGISTRY_USER}}/calculadora-html:latest'
       - run: 'sudo snap install ngrok'
-      - run: 'ngrok config add-authtoken ${{secrets.CI_TOKEN_NGROK}}'
+      - run: 'sudo ngrok config add-authtoken ${{secrets.CI_TOKEN_NGROK}}'
       - run: 'ngrok http 8080'
       
